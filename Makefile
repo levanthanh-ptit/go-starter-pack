@@ -1,5 +1,8 @@
 proto-gen:
+	buf mod prune
+	buf mod update
 	buf generate
+
 run-dev:
 	go run cmd/app/main.go
 
