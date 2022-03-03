@@ -42,8 +42,9 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.4 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
-	github.com/klauspost/compress v1.9.5 // indirect
+	github.com/klauspost/compress v1.11.7 // indirect
 	github.com/labstack/gommon v0.3.1 // indirect
+	github.com/levanthanh-ptit/go-grpc-kit v0.2.0 // indirect
 	github.com/lyft/protoc-gen-star v0.6.0 // indirect
 	github.com/mattn/go-colorable v0.1.11 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
