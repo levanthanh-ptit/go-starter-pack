@@ -41,10 +41,9 @@ func (s *httpServer) getCurrentUser(c echo.Context) (*domain.User, error) {
 }
 
 type registerDTO struct {
-	FullName    string `json:"fullName,required"`
-	Username    string `json:"username,required"`
-	Password    string `json:"password,required"`
-	TasksPerDay int    `json:"tasksPerDay,required"`
+	FullName string `json:"fullName,required"`
+	Username string `json:"username,required"`
+	Password string `json:"password,required"`
 }
 
 func (s *httpServer) Register(c echo.Context) (err error) {

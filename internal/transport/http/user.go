@@ -20,8 +20,7 @@ func (s *httpServer) GetMe(c echo.Context) error {
 }
 
 type updateUserDTO struct {
-	FullName    string `json:"fullName"`
-	TasksPerDay int    `json:"tasksPerDay"`
+	FullName string `json:"fullName"`
 }
 
 func (s *httpServer) UpdateMe(c echo.Context) error {

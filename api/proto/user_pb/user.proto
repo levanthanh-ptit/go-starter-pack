@@ -5,25 +5,13 @@ option go_package = "pkg/pb/user_pb";
 import "google/api/annotations.proto";
 
 service UserService {
-    rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {
+    rpc Register(RegisterRequest) returns (RegisterResponse) {
         option (google.api.http) = {
-            post: "/users"
+            post: "/auth/register"
             body: "*"
         };
     };
 
-    rpc GetUser (GetUserRequest) returns (GetUserResponse) {
-        option (google.api.http) = {
-            get: "/users/{id}"
-        };
-    };
-
-    rpc ListUser (ListUserRequest) returns (ListUserResponse) {
-        option (google.api.http) = {
-            get: "/users"
-        };
-    };
-    
     rpc Login(LoginRequest) returns (LoginResponse) {
         option (google.api.http) = {
             post: "/auth/login"
@@ -31,43 +19,24 @@ service UserService {
         };
     };
 
-    rpc VerifyAuthToken(VerifyAuthTokenRequest) returns (VerifyAuthTokenResponse) {}
+    rpc GetMe(GetMeRequest) returns (GetMeResponse) {
+        option (google.api.http) = {
+            get: "/users/me"
+        };
+    };
+
+    rpc UpdateMe(UpdateMeRequest) returns (UpdateMeResponse) {
+        option (google.api.http) = {
+            post: "/users/me"
+            body: "*"
+        };
+    };
 }
 
 message User {
-    string id = 1;
+    uint32 id = 1;
     string full_name = 2;
     string username = 3;
-}
-
-message CreateUserRequest {
-    string full_name = 2;
-    string username = 3;
-    string password = 4;
-}
-
-message CreateUserResponse {
-    User data = 1;
-}
-
-message GetUserRequest {
-    string id = 1;
-}
-
-message GetUserResponse {
-    User data = 1;
-}
-
-message ListUserRequest {
-    string filter = 1;
-    int32 offset = 2;
-    int32 limit = 3;
-    repeated string ids = 4;
-}
-
-message ListUserResponse {
-    repeated User data = 1;
-    int64 total = 2;
 }
 
 message LoginRequest {
@@ -80,11 +49,26 @@ message LoginResponse {
     string token = 2;
 }
 
-message VerifyAuthTokenRequest {
-    string token = 1;
+message RegisterRequest {
+    string full_name = 1;
+    string username = 2;
+    string password = 3;
 }
 
-message VerifyAuthTokenResponse {
-    bool authenticated = 1;
-    User payload = 2;
+message RegisterResponse {
+}
+
+message GetMeRequest {
+}
+
+message GetMeResponse {
+    User data = 1;
+}
+
+message UpdateMeRequest {
+    string full_name = 1;
+}
+
+message UpdateMeResponse {
+    User data = 1;
 }
